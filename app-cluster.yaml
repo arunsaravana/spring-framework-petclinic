@@ -9,4 +9,4 @@ nodeGroups:
     instanceType: t2.large
     desiredCapacity: 2
     ssh: # use existing EC2 key
-      publicKeyName: ak-instance
+      publicKeyName: ak-instance-usw2
