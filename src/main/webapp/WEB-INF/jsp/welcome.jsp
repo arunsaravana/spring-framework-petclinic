@@ -4,7 +4,7 @@
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
 <petclinic:layout pageName="home">
-    <h2><fmt:message key="welcome Arunkumar Sample SpringBoot Application"/></h2>
+    <h1><fmt:message key="Welcome Arunkumar Sample SpringBoot Application"/></h1>
     <div class="row">
         <div class="col-md-12">
             <spring:url value="/resources/images/pets.png" htmlEscape="true" var="petsImage"/>
