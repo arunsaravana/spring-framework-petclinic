@@ -20,4 +20,5 @@ ENV CATALINA_HOME /opt/apache-tomcat/apache-tomcat-9.0.19
 # Deploy
 WORKDIR /opt/apache-tomcat/apache-tomcat-9.0.19/webapps
 COPY target/petclinic.war .
+RUN mv petclinic.war ROOT.war
 CMD $CATALINA_HOME/bin/catalina.sh run
