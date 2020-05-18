@@ -17,12 +17,12 @@ pipeline {
       }
          
       stage ('Build') {
-          //  steps {
-          //      sh 'mvn clean install' 
-          //  } 
-          steps {
-          build 'build'
-          }
+            steps {
+                sh 'mvn clean install' 
+            } 
+       //   steps {
+       //   build 'build'
+       //   }
       }
       stage ('junit') {
           steps
