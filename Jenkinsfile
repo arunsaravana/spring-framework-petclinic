@@ -18,12 +18,10 @@ pipeline {
       }
          
       stage ('Build') {
-            steps {
-                sh 'mvn clean install' 
-            } 
-       //   steps {
-       //   build 'build'
-       //   }
+        //    steps {
+        //        sh 'mvn clean install' 
+        //    } 
+      sayHello 'Dave'
       }
       stage ('junit') {
           steps
