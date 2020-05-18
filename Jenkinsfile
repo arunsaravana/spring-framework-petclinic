@@ -1,7 +1,6 @@
-//libraries {
-//  lib('pipeline-library-demo')
-//}
-@Library('pipeline-library-demo') _
+libraries {
+  lib('pipeline-library-demo')
+}
 
 pipeline {
     environment {
