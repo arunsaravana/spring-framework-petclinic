@@ -1,3 +1,7 @@
+libraries {
+  lib('pipeline-library-demo')
+}
+
 pipeline {
     environment {
     registry = "arunsara/spring-application"
@@ -35,14 +39,15 @@ pipeline {
         {
             steps {
             
-            sh 'docker build . -t arunsara/spring-application:petclinic-${BUILD_NUMBER}'
+            sh 'docker build . -t arunsara/spring-application:petclinic-v${BUILD_NUMBER}'
         }
         }
         
         stage('Pusing Image to Dockerhub')
         {
             steps {
-                sh 'docker push arunsara/spring-application:petclinic-${BUILD_NUMBER}'
+                sh 'docker push arunsara/spring-application:petclinic-v${BUILD_NUMBER}'
+                sh 'docker rmi arunsara/spring-application:petclinic-v${BUILD_NUMBER}'
             }
         }
         stage('ESK Deloy') {
@@ -50,7 +55,7 @@ pipeline {
 			    withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awstest', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
               echo "Login Successfull"
               sh 'aws eks --region us-west-2  update-kubeconfig --name $ekscluster'
-              sh 'sed -i s/"BUILD_NUMBER"/"$BUILD_NUMBER"/g app-deployment.yaml'
+              sh 'sed -i s/"BUILD_NUMBER"/"v${BUILD_NUMBER}"/g app-deployment.yaml'
               sh '/usr/local/bin/kubectl apply -f app-deployment.yaml'
               sh '/usr/local/bin/kubectl apply -f app-service.yaml'
               sh '/usr/local/bin/kubectl get svc'
