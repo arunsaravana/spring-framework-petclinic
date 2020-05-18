@@ -20,7 +20,7 @@ pipeline {
           //  steps {
           //      sh 'mvn clean install' 
           //  } 
-          build
+          build 'build' 
       }
       stage ('junit') {
           steps
