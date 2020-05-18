@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 
 def info(build) {
-  sh 'mvn clean install'
+  mvn clean install
 }
 
 //def call(String name = 'human') {
