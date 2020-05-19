@@ -19,7 +19,7 @@ stages {
         }
    stage('Junit Test') {
          steps {
-                junit-test(path:'**/target/surefire-reports/*.xml')
+                junittest(path:'**/target/surefire-reports/*.xml')
                    }
         }     
    stage('Sonar Analysis') {
