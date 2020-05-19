@@ -31,7 +31,7 @@ stages {
     {
       steps {
         
-        dockbuild('arunsara', 'spring-application','petclinic')
+        dockbuild('arunsara', 'spring-application', 'petclinic')
       }
     }     
     }
