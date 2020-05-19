@@ -32,6 +32,10 @@ stages {
         dockerbuild('arunsara', 'spring-application', 'petclinic')
       }
     }     
-    
+   stage ('Kube Deploy') {
+      steps {
+        kubeupdate('us-west-2', 'springbootapp')
+      }
+    }  
 }
 }
