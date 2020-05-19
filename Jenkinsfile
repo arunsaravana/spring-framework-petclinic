@@ -26,6 +26,13 @@ stages {
          steps {
                 sonaranalysis()
                    }
-        }     
+        } 
+   stage ('Docker build')
+    {
+      steps {
+        
+        Dockbuild('arunsara', 'spring-application','petclinic')
+      }
+    }     
     }
 }
