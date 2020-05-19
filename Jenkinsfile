@@ -11,4 +11,11 @@ stages {
 		 }
       }
 }
+stages {
+       stage('build') {
+         steps {
+        mybuild()
+         }
+      }
+}     
 }
