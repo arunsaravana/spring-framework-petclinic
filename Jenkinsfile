@@ -10,12 +10,12 @@ stages {
           mycodecheckout(branch: 'master', scmUrl: 'https://github.com/arunsaravana/spring-framework-petclinic.git')
 		 }
       }
-}
 
    stage('build') {
          steps {
                 mybuild()
        
-      }
-}     
+                   }
+        }     
+    }
 }
