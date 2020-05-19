@@ -11,11 +11,11 @@ stages {
 		 }
       }
 }
-stages {
-       stage('build') {
+
+   stage('build') {
          steps {
-        mybuild()
-         }
+                mywar()
+       
       }
 }     
 }
