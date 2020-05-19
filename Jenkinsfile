@@ -1,10 +1,7 @@
 @Library('pipeline-library-demo') _
 
 pipeline {
-  //  environment {
-  //  registry = "arunsara/spring-application"
-  //  registryCredential = 'Dockerhub'
- // }     
+    
    agent any
 stages {
        stage('checkout') {
