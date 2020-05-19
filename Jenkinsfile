@@ -1,4 +1,4 @@
-@Library('pipeline-library-demo')_
+@Library('pipeline-library-demo') _
 
 pipeline {
     environment {
@@ -13,4 +13,5 @@ stages {
            scm (branch: 'master', scmUrl: 'https://github.com/arunsaravana/spring-framework-petclinic.git')
 		 }
       }
+}
 }
