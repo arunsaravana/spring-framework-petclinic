@@ -10,5 +10,6 @@ def call(String region, String ekscluster) {
               sh 'sed -i s/"BUILD_NUMBER"/"$BUILD_NUMBER"/g app-deployment.yaml'
               sh 'kubectl apply -f app-deployment.yaml'
               sh 'kubectl apply -f app-service.yaml'
+              sh 'kubectl get svc'
               }
               }
