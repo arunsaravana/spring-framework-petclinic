@@ -14,7 +14,7 @@ stages {
 
    stage('build') {
          steps {
-                mywar()
+                mybuild()
        
       }
 }     
