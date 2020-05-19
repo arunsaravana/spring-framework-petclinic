@@ -27,12 +27,11 @@ stages {
 //                sonaranalysis()
 //                   }
 //        } 
-   stage ('Docker build')
-    {
+   stage ('Docker build') {
       steps {
-        
         dockerbuild('arunsara', 'spring-application', 'petclinic')
       }
     }     
-    }
+    
+}
 }
