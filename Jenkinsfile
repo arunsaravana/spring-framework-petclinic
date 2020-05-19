@@ -16,6 +16,11 @@ stages {
                 mybuild()
        
                    }
+        }
+   stage('Sonar Analysis') {
+         steps {
+                sonaranalysis()
+                   }
         }     
     }
 }
