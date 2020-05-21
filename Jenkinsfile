@@ -16,16 +16,16 @@ stages {
        
                    }
         }
-//   stage('Junit Test') {
-//         steps {
-//                junittest('**/target/surefire-reports/*.xml')
-//                   }
-//        }     
-//   stage('Sonar Analysis') {
-//         steps {
-//                sonaranalysis()
-//                   }
-//        } 
+  stage('Junit Test') {
+         steps {
+                junittest('**/target/surefire-reports/*.xml')
+                   }
+        }     
+   stage('Sonar Analysis') {
+         steps {
+                sonaranalysis()
+                   }
+        } 
    stage ('Docker build') {
       steps {
         withCredentials([usernamePassword(
