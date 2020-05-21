@@ -33,7 +33,7 @@ stages {
     }     
    stage ('Kube Deploy') {
       steps {
-        kubeupdate('us-west-2', 'springbootapp')
+        kubeupdate('awstest','us-west-2', 'springbootapp')
       }
     }  
 }
