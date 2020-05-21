@@ -28,7 +28,13 @@ stages {
 //        } 
    stage ('Docker build') {
       steps {
+        withCredentials([usernamePassword(
+            credentialsId: "Dockerhub",
+            usernameVariable: "Username",
+            passwordVariable: "Password"
+        )]) {
         dockerbuild('arunsara', 'spring-application', 'petclinic')
+        }
       }
     }     
    stage ('Kube Deploy') {
