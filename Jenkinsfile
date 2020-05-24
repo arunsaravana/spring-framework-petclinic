@@ -1,17 +1,18 @@
 @Library('akpipeline') _
-import groovy.json.JsonSlurperClassic
+//import groovy.json.JsonSlurperClassic
+import groovy.json.*
 
 pipeline {
- //   def data = readJSON file:'parameters.json'
-        def json = readFile(file:'parameters.json')
-        def data = new JsonSlurperClassic().parseText(json)
+   def filename = 'parameters.json'
+   def jsonSlurper = new JsonSlurper()
+   data = jsonSlurper.parse(new File(filename))
+   def branch = "data.jenkinfile.parameters.branch"
         
            agent any
 stages {
        stage('checkout') {
          steps {
-                echo "branch: ${data.parameters.branch}"
-            //     echo "color: ${data.attachments[0].color}"
+                echo "$branch"
            mycodecheckout(branch: 'master', scmUrl: 'https://github.com/arunsaravana/spring-framework-petclinic.git')
 		 }
       }
