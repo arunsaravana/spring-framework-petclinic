@@ -6,6 +6,7 @@ pipeline {
 stages {
        stage('checkout') {
          steps {
+                 echo "branch: ${data.parameters.branch}"
            mycodecheckout(branch: 'master', scmUrl: 'https://github.com/arunsaravana/spring-framework-petclinic.git')
 		 }
       }
@@ -14,7 +15,7 @@ stages {
          steps {
                 mybuild()
        
-                   }
+                  }
         }
   stage('Junit Test') {
          steps {
