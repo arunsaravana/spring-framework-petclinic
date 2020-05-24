@@ -1,8 +1,8 @@
-import groovy.json.JsonOutput
+//import groovy.json.JsonOutput
 @Library('akpipeline') _
 
 pipeline {
-    def data = readJSON file:'parameters.json'
+ //   def data = readJSON file:'parameters.json'
    agent any
 stages {
        stage('checkout') {
