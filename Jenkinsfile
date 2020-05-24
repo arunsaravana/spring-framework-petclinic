@@ -1,7 +1,7 @@
 @Library('akpipeline') _
 
 pipeline {
-    
+    def data = readJSON file:'parameters.json'
    agent any
 stages {
        stage('checkout') {
