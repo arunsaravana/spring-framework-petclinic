@@ -1,1 +1,18 @@
-{"key":"branch","value":"master"}
+{
+"jenkinfile": {
+   "parameters": [
+       {
+    
+   "branch": "master",
+	 "scmUrl" : "https://github.com/arunsaravana/spring-framework-petclinic.git",
+	 "junitpath": "**/target/surefire-reports/*.xml",
+	 "dockerhub": "arunsara",
+	 "repo": "spring-application",
+	 "tag": "petclinic",
+	 "region":"us-west-2",
+	 "ekscluster" : "springbootapp"
+       }
+       ]
+     
+}
+}      
