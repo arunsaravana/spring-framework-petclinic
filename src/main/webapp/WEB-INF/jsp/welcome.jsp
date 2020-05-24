@@ -5,9 +5,9 @@
 
 <petclinic:layout pageName="home">
     <h2><fmt:message key="welcome"/></h2>
-<body>  
-Current Time: <%= java.util.Calendar.getInstance().getTime() %>  
-</body>  
+<BODY>
+    <h2>Sample App</h2>
+    </BODY>
     <div class="row">
         <div class="col-md-12">
             <spring:url value="/resources/images/pets.png" htmlEscape="true" var="petsImage"/>
