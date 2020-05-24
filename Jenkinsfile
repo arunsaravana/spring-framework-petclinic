@@ -1,13 +1,13 @@
 @Library('akpipeline') _
 //import groovy.json.JsonSlurperClassic
 import groovy.json.*
-
-pipeline {
    def filename = 'parameters.json'
    def jsonSlurper = new JsonSlurper()
-   data = jsonSlurper.parse(new File(filename))
+   def data = jsonSlurper.parse(new File(filename))
    def branch = "data.jenkinfile.parameters.branch"
         
+pipeline {
+
            agent any
 stages {
        stage('checkout') {
