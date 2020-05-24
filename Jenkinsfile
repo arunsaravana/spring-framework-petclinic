@@ -7,7 +7,7 @@ pipeline {
 stages {
        stage('checkout') {
          steps {
-                 echo "branch: ${data.parameters.branch}"
+             //    echo "branch: ${data.parameters.branch}"
            mycodecheckout(branch: 'master', scmUrl: 'https://github.com/arunsaravana/spring-framework-petclinic.git')
 		 }
       }
