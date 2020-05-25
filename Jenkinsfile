@@ -11,6 +11,8 @@ pipeline {
         string(defaultValue: "petclinic", description: '', name: 'hubtag')
         string(defaultValue: "us-west-2", description: '', name: 'region')
         string(defaultValue: "springbootapp", description: '', name: 'clutername')
+        string(defaultValue: "Dockerhub", description: '', name: 'hubid')
+        string(defaultValue: "awstest", description: '', name: 'awsid')
     }
 
 
@@ -42,7 +44,7 @@ stages {
    stage ('Docker build') {
       steps {
         withCredentials([usernamePassword(
-            credentialsId: "Dockerhub",
+            credentialsId: "${params.hubid}",
             usernameVariable: "Username",
             passwordVariable: "Password"
         )]) {
@@ -52,7 +54,7 @@ stages {
     }     
    stage ('Kube Deploy') {
       steps {
-        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awstest', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: "${params.awsid}", secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
         kubeupdate("${params.region}", "${params.clutername}")
         } 
       }
