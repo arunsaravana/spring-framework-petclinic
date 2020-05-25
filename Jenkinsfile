@@ -20,7 +20,7 @@ stages {
   stage('checkout') {
          steps {
            mycodecheckout(branch: props.scm.branch , scmUrl: props.scm.repo)
-                 //echo "repo: ${github_repo}" 
+            
 		 }
       }
 
@@ -32,7 +32,7 @@ stages {
         }
 //  stage('Junit Test') {
 //         steps {
-//                junittest("${params.testpath}")
+//                junittest(props.junitloc.testpath)
 //                   }
 //        }     
 //   stage('Sonar Analysis') {
