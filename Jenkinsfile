@@ -1,8 +1,8 @@
 @Library('akpipeline') _
 
 def loadValuesYaml(){
-def properties = readYaml (file: 'template.yaml')
- return properties;
+def propertiesfile = readYaml (file: 'template.yaml')
+ return propertiesfile;
  }
 
 pipeline {
@@ -11,7 +11,7 @@ pipeline {
 stages {
        stage('checkout') {
          steps {
-           mycodecheckout(branch: properties.scm.branch , scmUrl: properties.scm.repo)
+           mycodecheckout(branch: propertiesfile.scm.branch , scmUrl: propertiesfile.scm.repo)
                  //echo "repo: ${github_repo}" 
 		 }
       }
@@ -36,18 +36,18 @@ stages {
    stage ('Docker build') {
       steps {
         withCredentials([usernamePassword(
-            credentialsId: properties.CredId.dockercrid,
+            credentialsId: propertiesfile.CredId.dockercrid,
             usernameVariable: "Username",
             passwordVariable: "Password"
         )]) {
-        dockerbuild(properties.dockerhub.hubuser, properties.dockerhub.hubrepo, properties.dockerhub.hubtag)
+        dockerbuild(propertiesfile.dockerhub.hubuser, propertiesfile.dockerhub.hubrepo, propertiesfile.dockerhub.hubtag)
         }
       }
     }     
    stage ('Kube Deploy') {
       steps {
-        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: properties.CredId.awsid , secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-        kubeupdate(properties.eks.eksregion, properties.eks.ekscluster)
+        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: propertiesfile.CredId.awsid , secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+        kubeupdate(propertiesfile.eks.eksregion, propertiesfile.eks.ekscluster)
         } 
       }
     }  
