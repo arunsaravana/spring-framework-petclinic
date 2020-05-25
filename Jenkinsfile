@@ -12,7 +12,8 @@ stages {
        stage('checkout') {
          steps {
            mycodecheckout(branch: 'master', scmUrl: 'https://github.com/arunsaravana/spring-framework-petclinic.git')
-                 echo "branch: ${params.repobranch}" 
+                 //echo "branch: ${params.repobranch}" 
+                sh "echo ${params.repobranch}"
 		 }
       }
 
