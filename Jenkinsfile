@@ -3,7 +3,7 @@
 pipeline {
         
         parameters {
-        string(defaultValue: master, description: '', name: 'repobranch')
+        string(defaultValue: "master", description: '', name: 'repobranch')
     }
 
 
