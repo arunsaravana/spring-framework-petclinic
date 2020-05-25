@@ -4,6 +4,7 @@ pipeline {
         
         parameters {
         string(defaultValue: "master", description: '', name: 'repobranch')
+        string(defaultValue: "https://github.com/arunsaravana/spring-framework-petclinic.git", description: '', name: 'repourl')        
     }
 
 
@@ -11,7 +12,7 @@ pipeline {
 stages {
        stage('checkout') {
          steps {
-           mycodecheckout(branch: '${params.repobranch}', scmUrl: 'https://github.com/arunsaravana/spring-framework-petclinic.git')
+           mycodecheckout(branch: '${params.repobranch}', scmUrl: '${params.repourl}')
 		 }
       }
 
