@@ -12,7 +12,7 @@ stages {
      steps {
         script {
                 props = loadValuesYaml()
-                println proertiesfile.getClass()
+                println props.getClass()
      }
     }
   }
