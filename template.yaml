@@ -14,27 +14,27 @@ parameters:
   defaultValue: https://github.com/arunsaravana/spring-framework-petclinic.git
 
 - name: testpath
-	type: string
+  type: string
   defaultValue: **/target/surefire-reports/*.xml
 
 - name: hubuser
-	type: string
+  type: string
   defaultValue: arunsara
 
 - name: testpath
-	type: hubrepo
+  type: hubrepo
   defaultValue: spring-application
 
 - name: hubtag
-	type: string
+  type: string
   defaultValue: petclinic
 
 - name: testpath
-	type: region
+  type: region
   defaultValue: us-west-2
 
 - name: testpath
-	type: clutername
+  type: clutername
   defaultValue: springbootapp
 
 - name: hubid
