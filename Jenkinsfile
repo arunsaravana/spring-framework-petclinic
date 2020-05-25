@@ -1,12 +1,18 @@
 @Library('akpipeline') _
 
 pipeline {
+        
+        parameters {
+        string(defaultValue: master, description: '', name: 'repobranch')
+    }
+
 
            agent any
 stages {
        stage('checkout') {
          steps {
            mycodecheckout(branch: 'master', scmUrl: 'https://github.com/arunsaravana/spring-framework-petclinic.git')
+                 echo "branch: ${params.repobranch}" 
 		 }
       }
 
@@ -16,16 +22,17 @@ stages {
        
                   }
         }
-  stage('Junit Test') {
-         steps {
-                junittest('**/target/surefire-reports/*.xml')
-                   }
-        }     
-   stage('Sonar Analysis') {
-         steps {
-                sonaranalysis()
-                   }
-        } 
+//  stage('Junit Test') {
+//         steps {
+//                junittest('**/target/surefire-reports/*.xml')
+//                   }
+//        }     
+//   stage('Sonar Analysis') {
+//         steps {
+//                sonaranalysis()
+//                   }
+//        } 
+        
    stage ('Docker build') {
       steps {
         withCredentials([usernamePassword(
