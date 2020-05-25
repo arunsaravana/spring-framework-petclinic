@@ -7,7 +7,7 @@ description: Spring Framework Petclinic Demo
 parameters:
 - name: repobranch
   type: string
-  defaultValue: master
+  defaultValue: "master"
 
 - name: github_repo
   type: string
