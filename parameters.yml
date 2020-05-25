@@ -1,0 +1,7 @@
+properties:
+ 
+  - param: stringParam
+    args:
+      name: branch
+      defaultValue: master
+      description:
