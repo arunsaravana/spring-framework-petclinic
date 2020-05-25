@@ -1,7 +1,7 @@
 @Library('akpipeline') _
 
 def loadValuesYaml(){
-def propertiesfile = readYaml (file: 'template.yaml')
+def propertiesfile = readYaml (file: 'template.yml')
  return propertiesfile;
 
  }
