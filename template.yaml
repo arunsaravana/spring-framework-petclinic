@@ -11,7 +11,7 @@ parameters:
 
 - name: github_repo
   type: string
-  defaultValue: https://github.com/arunsaravana/spring-framework-petclinic.git
+  defaultValue: "https://github.com/arunsaravana/spring-framework-petclinic.git"
 
 - name: testpath
   type: string
