@@ -2,15 +2,12 @@
 
 def loadValuesYaml(){
 def props = readYaml (file: 'template.yml')
- return props;
-
+return props;
  }
 
-pipeline {
-        
+pipeline {        
     agent any
 stages {
-    
   stage ('Prepare') {
      steps {
         script {
@@ -19,8 +16,8 @@ stages {
      }
     }
   }
-    
-       stage('checkout') {
+
+  stage('checkout') {
          steps {
            mycodecheckout(branch: props.scm.branch , scmUrl: props.scm.repo)
                  //echo "repo: ${github_repo}" 
