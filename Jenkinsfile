@@ -3,12 +3,23 @@
 def loadValuesYaml(){
 def propertiesfile = readYaml (file: 'template.yaml')
  return propertiesfile;
+
  }
 
 pipeline {
         
     agent any
 stages {
+    
+  stage ('Prepare') {
+     steps {
+        script {
+                propertiesfile = loadValuesYaml()
+                println proertiesfile.getClass()
+     }
+    }
+  }
+    
        stage('checkout') {
          steps {
            mycodecheckout(branch: propertiesfile.scm.branch , scmUrl: propertiesfile.scm.repo)
