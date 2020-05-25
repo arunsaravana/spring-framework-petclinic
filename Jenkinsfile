@@ -5,6 +5,12 @@ pipeline {
         parameters {
         string(defaultValue: "master", description: '', name: 'repobranch')
         string(defaultValue: "https://github.com/arunsaravana/spring-framework-petclinic.git", description: '', name: 'repourl')        
+        string(defaultValue: "**/target/surefire-reports/*.xml", description: '', name: 'testpath') 
+        string(defaultValue: "arunsara", description: '', name: 'hubuser')
+        string(defaultValue: "spring-application", description: '', name: 'hubrepo')
+        string(defaultValue: "petclinic", description: '', name: 'hubtag')
+        string(defaultValue: "us-west-2", description: '', name: 'region')
+        string(defaultValue: "springbootapp", description: '', name: 'clutername')
     }
 
 
@@ -24,7 +30,7 @@ stages {
         }
 //  stage('Junit Test') {
 //         steps {
-//                junittest('**/target/surefire-reports/*.xml')
+//                junittest("${params.testpath}")
 //                   }
 //        }     
 //   stage('Sonar Analysis') {
@@ -40,14 +46,14 @@ stages {
             usernameVariable: "Username",
             passwordVariable: "Password"
         )]) {
-        dockerbuild('arunsara', 'spring-application', 'petclinic')
+        dockerbuild("${params.hubuser}", "${params.hubrepo}", "${params.hubtag}")
         }
       }
     }     
    stage ('Kube Deploy') {
       steps {
         withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awstest', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-        kubeupdate('us-west-2', 'springbootapp')
+        kubeupdate("${params.region}", "${params.clutername}")
         } 
       }
     }  
