@@ -11,9 +11,5 @@ eks:
 CredId:
    dockercrid: 'Dockerhub'
    awsid: 'awstest'
-Maven:
-   Goals: 
-      - 'mvn clean install'
-      - 'mvn clean package'
-Sonar:
-    command: 'mvn sonar:sonar'
+junitloc:
+   testpath: '**/target/surefire-reports/*.xml'
