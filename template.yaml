@@ -1,7 +1,7 @@
 version: 1
 type: pipeline-template
 
-name: Petclinic Pipeline Job
+name: Petclinic App Pipeline Job
 description: Spring Framework Petclinic Demo
 
 parameters:
