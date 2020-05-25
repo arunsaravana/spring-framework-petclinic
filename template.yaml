@@ -1,48 +1,19 @@
-version: 1
-type: pipeline-template
-
-name: Petclinic App Pipeline Job
-description: Spring Framework Petclinic Demo
-
-parameters:
-- name: repobranch
-  type: string
-  defaultValue: "master"
-
-- name: github_repo
-  type: string
-  defaultValue: "https://github.com/arunsaravana/spring-framework-petclinic.git"
-
-- name: testpath
-  type: string
-  defaultValue: **/target/surefire-reports/*.xml
-
-- name: hubuser
-  type: string
-  defaultValue: arunsara
-
-- name: testpath
-  type: hubrepo
-  defaultValue: spring-application
-
-- name: hubtag
-  type: string
-  defaultValue: petclinic
-
-- name: testpath
-  type: region
-  defaultValue: us-west-2
-
-- name: testpath
-  type: clutername
-  defaultValue: springbootapp
-
-- name: hubid
-  displayName: Docker Credentials ID
-  type: credentials
-  defaultValue: Dockerhub
-
-- name: awsid
-  displayName: AWS Credentials ID
-  type: credentials
-  defaultValue: awstest
+scm:
+   branch: 'master'
+   repo: 'https://github.com/arunsaravana/spring-framework-petclinic.git'
+dockerhub:
+   hubuser: 'arunsara'
+   hubrepo: 'spring-application'
+   hubtag: 'petclinic'
+eks:
+   ekscluster: 'springbootapp'
+   eksregion: 'us-west-2'
+CredId:
+   dockercrid: 'Dockerhub'
+   awsid: 'awstest'
+Maven:
+   Goals: 
+      - 'mvn clean install'
+      - 'mvn clean package'
+Sonar:
+    command: 'mvn sonar:sonar'
