@@ -3,8 +3,8 @@
 pipeline {
         
         parameters {
-        string(defaultValue: "master", description: '', name: 'repobranch')
-        string(defaultValue: "https://github.com/arunsaravana/spring-framework-petclinic.git", description: '', name: 'repourl')        
+//        string(defaultValue: "master", description: '', name: 'repobranch')
+//        string(defaultValue: "https://github.com/arunsaravana/spring-framework-petclinic.git", description: '', name: 'repourl')        
         string(defaultValue: "**/target/surefire-reports/*.xml", description: '', name: 'testpath') 
         string(defaultValue: "arunsara", description: '', name: 'hubuser')
         string(defaultValue: "spring-application", description: '', name: 'hubrepo')
@@ -20,7 +20,7 @@ pipeline {
 stages {
        stage('checkout') {
          steps {
-           mycodecheckout(branch: "${params.repobranch}", scmUrl: "${params.repourl}")
+           mycodecheckout(branch: "${repobranch}", scmUrl: "${github_repo}")
 		 }
       }
 
