@@ -12,7 +12,7 @@ pipeline {
 stages {
        stage('checkout') {
          steps {
-           mycodecheckout(branch: '${params.repobranch}', scmUrl: '${params.repourl}')
+           mycodecheckout(branch: "${params.repobranch}", scmUrl: "${params.repourl}")
 		 }
       }
 
